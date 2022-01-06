@@ -1,0 +1,46 @@
+<div class="alert alert-info" role="alert">
+    Please Login from here
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username"
+            formControlName="username">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"
+            formControlName="password">
+    </div>
+
+    <div class="form-group">
+        <label for="country">Country</label>
+        <select name="country" id="country" class="form-control" formControlName="countryId">
+            <option selected="" value="">--Select Country--</option>
+            <option [value]="country.id" *ngFor="let country of countries">
+                {{country.name}}
+            </option>
+        </select>
+    </div>
+
+    <div style="margin-top: 10px;">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+<div style="float: right; width:50%;">
+
+    <h3>Form Status</h3>
+    <b>valid : </b>{{loginForm.valid}}
+    <b>invalid : </b>{{loginForm.invalid}}
+    <b>touched : </b>{{loginForm.touched}}
+    <b>untouched : </b>{{loginForm.untouched}}
+    <b>pristine : </b>{{loginForm.pristine}}
+    <b>dirty : </b>{{loginForm.dirty}}
+    <b>disabled : </b>{{loginForm.disabled}}
+    <b>enabled : </b>{{loginForm.enabled}}
+
+    <h3>Form Value</h3>
+    {{loginForm.value |json}}
+
+</div>
